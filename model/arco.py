@@ -10,3 +10,4 @@ class Arco:
     raceId: int
     d2: Driver
     p2: int
+    peso: int
