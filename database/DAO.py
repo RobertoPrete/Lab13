@@ -40,7 +40,8 @@ class DAO:
         query = """select distinct d.*
                     from races r , results r2 , status s , drivers d 
                     where r.raceId = r2.raceId and r2.driverId = d.driverId
-                    and r.`year` = %s"""
+                    and r.`year` = %s
+                    and r2.`position` is not null"""
         cursor.execute(query, (year, ))
         for row in cursor:
             result.append(Driver(**row))
