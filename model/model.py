@@ -19,6 +19,9 @@ class Model:
         self._graph.clear()
         self._nodes = DAO.getAllNodes(self._year)
         self._graph.add_nodes_from(self._nodes)
+        self._edges = DAO.getAllEdges(self._year, self._idMapDrivers)
+        # for edge in self._edges:
+
 
     def getGraphDetails(self):
         return self._graph.number_of_nodes(), self._graph.number_of_edges()
