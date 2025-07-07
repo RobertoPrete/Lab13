@@ -16,10 +16,24 @@ class Controller:
         self._view.update_page()
 
     def handleDDYearSelection(self, e):
-        pass
+        self._year = e.control.value
+        self._model.setYear(self._year)
 
-    def handleCreaGrafo(self,e):
-        pass
+    def handleCreaGrafo(self, e):
+        year = self._year
+        if year is None:
+            self._view.txt_result.clear()
+            self._view.txt_result.controls.append(ft.Text("Please select a year"))
+            self._view.update_page()
+            return
+        self._model.buildGraph()
+        self._view.txt_result.clear()
+        self._view.txt_result.controls.append(ft.Text("Grafo correttamente creato: "))
+        numNodi, numArchi = self._model.getGraphDetails()
+        self._view.txt_result.controls.append(ft.Text(f"Numero di nodi: {numNodi}"))
+        self._view.txt_result.controls.append(ft.Text(f"Numero di archi: {numArchi}"))
+        self._view.txt_result.controls.append(ft.Text(f"Best driver: , with score: "))
+        self._view.update_page()
 
     def handleCerca(self, e):
         pass

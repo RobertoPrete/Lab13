@@ -16,15 +16,18 @@ class View(ft.UserControl):
         self._controller = None
         # graphical elements
         self._title = None
-        self._txt_name = None
-        self._txt_result = None
+        self._ddAnno = None
+        self._btnCreaGrafo = None
+        self._txtIntK = None
+        self._btnCerca = None
+        self.txt_result = None
 
     def load_interface(self):
         # title
         self._title = ft.Text("TdP Lab 13 - simulazione esame", color="blue", size=24)
         self._page.controls.append(self._title)
 
-        self._ddAnno = ft.Dropdown(label="Anno")
+        self._ddAnno = ft.Dropdown(label="Anno", on_change=self._controller.handleDDYearSelection)
         self._controller.fillDDYear()
         self._btnCreaGrafo = ft.ElevatedButton(text="Vittorie Piloti", on_click=self._controller.handleCreaGrafo)
 
@@ -35,10 +38,7 @@ class View(ft.UserControl):
         self._txtIntK = ft.TextField(label="Dimensione K")
         self._btnCerca = ft.ElevatedButton(text="Cerca Dream Team",
                                            on_click=self._controller.handleCerca)
-        row2 = ft.Row([ft.Container(self._txtIntK, width=250),
-            ft.Container(self._btnCerca, width=250)
-        ], alignment=ft.MainAxisAlignment.CENTER)
-
+        row2 = ft.Row([ft.Container(self._txtIntK, width=250), ft.Container(self._btnCerca, width=250)], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
         self._page.controls.append(row2)
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
