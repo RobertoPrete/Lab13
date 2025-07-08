@@ -1,5 +1,6 @@
 from database.DB_connect import DBConnect
-from model.arco import Arco
+from model.arcoV1 import ArcoV1
+from model.arcoV2 import ArcoV2
 from model.driver import Driver
 
 
@@ -72,7 +73,7 @@ class DAO:
                     where t1.`position`<t2.`position`"""
         cursor.execute(query, (year, year, ))
         for row in cursor:
-            result.append(Arco(idMapDrivers[row["d1"]], row["p1"], row["raceId"], idMapDrivers[row["d2"]], row["p2"] ))
+            result.append(ArcoV1(idMapDrivers[row["d1"]], row["p1"], row["raceId"], idMapDrivers[row["d2"]], row["p2"]))
         cursor.close()
         conn.close()
         return result
@@ -101,7 +102,7 @@ class DAO:
                         order by t1.driverid, t2.driverid, t1.raceid """
         cursor.execute(query, (year, year,))
         for row in cursor:
-            result.append(Arco(idMapDrivers[row["d1"]], row["p1"], row["raceId"], idMapDrivers[row["d2"]], row["p2"],
+            result.append(ArcoV2(idMapDrivers[row["d1"]], row["p1"], row["raceId"], idMapDrivers[row["d2"]], row["p2"],
                                row["peso"]))
         cursor.close()
         conn.close()

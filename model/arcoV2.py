@@ -4,7 +4,7 @@ from model.driver import Driver
 
 
 @dataclass
-class Arco:
+class ArcoV2:
     d1: Driver
     p1: int
     raceId: int

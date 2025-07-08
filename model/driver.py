@@ -21,4 +21,4 @@ class Driver:
         return hash(self.driverId)
 
     def __str__(self):
-        return f"{self.driverRef}"
+        return f"{self.surname}"

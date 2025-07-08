@@ -32,7 +32,8 @@ class Controller:
         numNodi, numArchi = self._model.getGraphDetails()
         self._view.txt_result.controls.append(ft.Text(f"Numero di nodi: {numNodi}"))
         self._view.txt_result.controls.append(ft.Text(f"Numero di archi: {numArchi}"))
-        self._view.txt_result.controls.append(ft.Text(f"Best driver: , with score: "))
+        bestDriver = self._model.getBestDriver()
+        self._view.txt_result.controls.append(ft.Text(f"Best driver: {bestDriver[0]} , with score: {bestDriver[1]}"))
         self._view.update_page()
 
     def handleCerca(self, e):
